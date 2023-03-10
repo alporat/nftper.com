@@ -16,7 +16,7 @@
 <div class=container-fluid>
 <nav class="navbar navbar-expand-md navbar-light">
 <a class="navbar-brand heading-black page-scroll" href=#home>
-<div class=new href=#home>new</div>
+<div class=new href=#home>BETA</div>
 <img src=img/logo.png alt=test>
 <span>NFT</span>PER
 </a>
@@ -65,7 +65,7 @@
 </li>
 </ul>
 <form class=form-inline>
-<a class="btn btn-primary page-scroll" href=#pricing>Soon</a>
+<a class="btn btn-primary page-scroll" href=#pricing>Buy</a>
 </form>
 </div>
 </nav>
@@ -175,7 +175,7 @@ Made for NFT flippers, by an NFT flipper.
 </div>
 </div>
 <div style="text-align:center;margin:1rem auto 2.5rem auto">
-<iframe style=width:70%;aspect-ratio:40/23 src=https://www.youtube-nocookie.com/embed/52hcFxN9A_s title="NFTPER Bidding Bot DEMO" frameborder=0 allow=fullscreen;accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share allowfullscreen></iframe>
+<iframe style=width:70%;aspect-ratio:40/23 src=https://www.youtube-nocookie.com/embed/52hcFxN9A_s?rel=0 title="NFTPER Bidding Bot DEMO" frameborder=0 allow=accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share allowfullscreen></iframe>
 </div>
 <div class="row mt-5">
 <div class="col-md-6 mx-auto text-center">
@@ -250,9 +250,7 @@ Made for NFT flippers, by an NFT flipper.
 <li><span class=text-muted>(coming soon)</span> LooksRare Support</li>
 <li>✔️ Whitelist on future Lifetime NFT</li>
 </ul>
-<a href=https://discord.gg/hsa6VKbjzw target=_blank class="btn btn-primary">
-Releasing on Mar. 10
-</a>
+<button class="btn btn-primary" id=biweekly>Purchase</button>
 </div>
 </div>
 <div class="card text-center">
@@ -267,9 +265,7 @@ Releasing on Mar. 10
 <li><span class=text-muted>(coming soon)</span> LooksRare Support</li>
 <li>✔️ Whitelist on future Lifetime NFT</li>
 </ul>
-<a href=https://discord.gg/hsa6VKbjzw target=_blank class="btn btn-primary">
-Releasing on Mar. 10
-</a>
+<button class="btn btn-primary" id=monthly>Purchase</button>
 </div>
 </div>
 <div class="card text-center">
@@ -359,5 +355,12 @@ Join Our Discord for Updates
 <script src=https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.0/feather.min.js></script>
 <script src=js/scripts.js></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+<script src="https://integrate.depay.com/widgets/v10.js"></script>
+<script>
+document.getElementById("biweekly").addEventListener("click",function(e){DePayWidgets.Payment({accept:[{blockchain:"polygon",amount:0.06,token:"0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",receiver:"0x3adC0b1c095B472692256E74581FF0C23aA64f25"},{blockchain:"ethereum",amount:0.06,token:"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",receiver:"0x3adC0b1c095B472692256E74581FF0C23aA64f25"}],amount:{token:true},succeeded:(transaction)=>{setTimeout(function(){window.location.replace("https://docs.nftper.com/set-up");window.location.href="https://docs.nftper.com/set-up";},1000);}});});
+document.getElementById("monthly").addEventListener("click",function(e){DePayWidgets.Payment({accept:[{blockchain:"polygon",amount:0.1,token:"0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",receiver:"0x3adC0b1c095B472692256E74581FF0C23aA64f25"},{blockchain:"ethereum",amount:0.1,token:"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",receiver:"0x3adC0b1c095B472692256E74581FF0C23aA64f25"}],amount:{token:true},succeeded:(transaction)=>{setTimeout(function(){window.location.replace("https://docs.nftper.com/set-up");window.location.href="https://docs.nftper.com/set-up";},1000);}});});
+</script>
 </body>
 </html>
