@@ -1,3 +1,9 @@
+// banner
+function closeBanner() {
+    document.getElementById('top-banner').style.display = 'none';
+    document.querySelector('.smart-scroll').classList.add('banner-closed');
+    document.body.classList.add('banner-closed');
+};
 $(function () {
 
     // init feather icons
@@ -15,6 +21,7 @@ $(function () {
         }, 1000);
         event.preventDefault();
     });
+
 
     // toggle scroll menu
     var scrollTop = 0;
