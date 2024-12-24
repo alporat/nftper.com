@@ -214,7 +214,7 @@ Coming Soon...
 <div class="card text-center">
 <div class=card-body>
 <h4 class="card-title pt-3">Remove Prefix</h4>
-<h2 class="card-title text-primary pt-4">Ξ0.2</h2>
+<h2 class="card-title text-primary pt-4">Ξ0.15</h2>
 <a class="text-muted">1 month access <div class="text-muted" style="display:inline;width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" title="Ends when current subscription month ends">🛈</div></a>
 <ul class="list-unstyled pricing-list">
 <li>✔️ Remove NFTPER prefix from your username</li>
@@ -305,20 +305,22 @@ const buttons=[
 {id:"standard",price:0.4*pricex},
 {id:"pro",price:0.7*pricex},
 {id:"ultra",price:0.95*pricex},
-{id:"prefix",price:0.2*pricex}];
+{id:"prefix",price:0.15}];
 
 
 
 buttons.forEach(button=>
 {
-    document.getElementById(button.id+"price").textContent = `Ξ${parseFloat(button.price.toFixed(3))}`;
-    if (pricex != 1) {
-        document.getElementById(button.id+"sale").style.display = "unset";
-        document.getElementById(button.id+"sale").title = `Promo code activated: ${promo}`;
-        // document.getElementById(button.id+"sale2").style.display = "unset";
+    if (button.id!="prefix") {
+        try {
+            document.getElementById(button.id+"price").textContent = `Ξ${parseFloat(button.price.toFixed(3))}`;
+            if (pricex != 1) {
+                document.getElementById(button.id+"sale").style.display = "unset";
+                document.getElementById(button.id+"sale").title = `Promo code activated: ${promo}`;
+                // document.getElementById(button.id+"sale2").style.display = "unset";
+            }
+        } catch {}
     }
-    try {
-    } catch {}
 
     document.getElementById(button.id).addEventListener("click",function(e){
         DePayWidgets.Payment({
