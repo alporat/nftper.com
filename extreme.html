@@ -302,9 +302,9 @@ if (promo!=null && promo==="john10") {
     pricex = 0.9;
 };
 const buttons=[
-{id:"standard",price:0.4*pricex},
-{id:"pro",price:0.7*pricex},
-{id:"ultra",price:0.95*pricex},
+{id:"standard",price:parseFloat((0.4*pricex).toFixed(3))},
+{id:"pro",price:parseFloat((0.7*pricex).toFixed(3))},
+{id:"ultra",price:parseFloat((0.95*pricex).toFixed(3))},
 {id:"prefix",price:0.15}];
 
 
@@ -313,7 +313,7 @@ buttons.forEach(button=>
 {
     if (button.id!="prefix") {
         try {
-            document.getElementById(button.id+"price").textContent = `Ξ${parseFloat(button.price.toFixed(3))}`;
+            document.getElementById(button.id+"price").textContent = `Ξ${button.price}`;
             if (pricex != 1) {
                 document.getElementById(button.id+"sale").style.display = "unset";
                 document.getElementById(button.id+"sale").title = `Promo code activated: ${promo}`;
