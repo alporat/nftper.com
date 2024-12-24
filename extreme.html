@@ -282,14 +282,26 @@ Made for NFT flippers, by an NFT flipper.
 <script src=https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.0/feather.min.js></script>
 <script src=js/scripts-1.js></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
-<script src="https://integrate.depay.com/widgets/v10.2.16.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.2.0/ethers.umd.min.js" type="application/javascript"></script>
+<script src="https://integrate.depay.com/widgets/v12.js"></script>
 <script>const buttons=[
 {id:"standard",price:0.4},
 {id:"pro",price:0.7},
 {id:"ultra",price:0.95},
 {id:"prefix",price:0.2}];
-buttons.forEach(button=>{document.getElementById(button.id).addEventListener("click",function(e){DePayWidgets.Payment({accept:[{blockchain:"polygon",amount:button.price,token:"0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",receiver:"0x3adC0b1c095B472692256E74581FF0C23aA64f25"},{blockchain:"ethereum",amount:button.price,token:"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",receiver:"0x3adC0b1c095B472692256E74581FF0C23aA64f25"}],amount:{token:true},succeeded:(transaction)=>{setTimeout(function(){window.location.replace("https://docs.nftper.com/set-up");window.location.href="https://docs.nftper.com/set-up";},1000);}});});});
+buttons.forEach(button=>
+{document.getElementById(button.id).addEventListener("click",function(e){
+    DePayWidgets.Payment({
+        whitelist: {
+            ethereum: ['0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE','0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'],
+            polygon: ['0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619']
+        },
+        accept:[
+            {blockchain:"polygon",amount:button.price,token:"0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",receiver:"0x3adC0b1c095B472692256E74581FF0C23aA64f25"},
+            {blockchain:"ethereum",amount:button.price,token:"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",receiver:"0x3adC0b1c095B472692256E74581FF0C23aA64f25"},
+            {blockchain:"ethereum",amount:button.price,token:"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",receiver:"0x3adC0b1c095B472692256E74581FF0C23aA64f25"}],
+        amount:{token:true},
+        succeeded:(transaction)=>{setTimeout(function(){window.location.replace("https://docs.nftper.com/set-up");window.location.href="https://docs.nftper.com/set-up";},1000);}});});});
 //document.getElementById("standard").addEventListener("click",function(e){DePayWidgets.Payment({accept:[{blockchain:"polygon",amount:0.09,token:"0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",receiver:"0x3adC0b1c095B472692256E74581FF0C23aA64f25"},{blockchain:"ethereum",amount:0.09,token:"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",receiver:"0x3adC0b1c095B472692256E74581FF0C23aA64f25"}],amount:{token:true},succeeded:(transaction)=>{setTimeout(function(){window.location.replace("https://docs.nftper.com/set-up");window.location.href="https://docs.nftper.com/set-up";},1000);}});});
 //document.getElementById("pro").addEventListener("click",function(e){DePayWidgets.Payment({accept:[{blockchain:"polygon",amount:0.125,token:"0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",receiver:"0x3adC0b1c095B472692256E74581FF0C23aA64f25"},{blockchain:"ethereum",amount:0.125,token:"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",receiver:"0x3adC0b1c095B472692256E74581FF0C23aA64f25"}],amount:{token:true},succeeded:(transaction)=>{setTimeout(function(){window.location.replace("https://docs.nftper.com/set-up");window.location.href="https://docs.nftper.com/set-up";},1000);}});});
 </script>
