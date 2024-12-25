@@ -150,9 +150,9 @@ Made for NFT flippers, by an NFT flipper.
 <div class=card-body>
 <h4 class="card-title pt-3">Fast</h4>
 
-<div class="text-muted" id=standardsale style="display:none;  font-size:1.3rem; width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" ><s>Ξ0.4</s> 🛈</div>
+<div class="text-muted" id=standardsale style="display:none;  font-size:1.3rem; width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" ><s>Ξ0.35</s> 🛈</div>
 
-<h2 class="card-title text-primary pt-4" id=standardprice>Ξ0.4</h2>
+<h2 class="card-title text-primary pt-4" id=standardprice>Ξ0.35</h2>
 <a class="text-muted" style=display:block>1 month access</a>
 <!--a class="text-muted"><br>&nbsp;</a-->
 <ul class="list-unstyled pricing-list" style=text-align:left;place-self:center>
@@ -170,9 +170,9 @@ Made for NFT flippers, by an NFT flipper.
 <div class=card-body>
 <h4 class="card-title pt-3">Super Fast</h4>
 
-<div class="text-muted" id=prosale style="display:none;  font-size:1.3rem; width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" ><s>Ξ0.7</s> 🛈</div>
+<div class="text-muted" id=prosale style="display:none;  font-size:1.3rem; width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" ><s>Ξ0.6</s> 🛈</div>
 
-<h2 class="card-title text-primary pt-4" id=proprice>Ξ0.7</h2>
+<h2 class="card-title text-primary pt-4" id=proprice>Ξ0.6</h2>
 <a class="text-muted" style=display:block>1 month access</a>
 <ul class="list-unstyled pricing-list" style=text-align:left;place-self:center>
 <li>✔️ Up to 30 bids/sec</li>
@@ -189,8 +189,8 @@ Made for NFT flippers, by an NFT flipper.
 <div class=card-body>
 <h4 class="card-title pt-3">Extremely Fast</h4>
 
-<div class="text-muted" id=ultrasale style="display:none;  font-size:1.3rem; width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" ><s>Ξ0.95</s> 🛈</div>
-<h2 class="card-title text-primary pt-4" id=ultraprice>Ξ0.95</h2>
+<div class="text-muted" id=ultrasale style="display:none;  font-size:1.3rem; width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" ><s>Ξ0.82</s> 🛈</div>
+<h2 class="card-title text-primary pt-4" id=ultraprice>Ξ0.82</h2>
 
 <a class="text-muted" style=display:block>1 month access</a>
 <ul class="list-unstyled pricing-list" style=text-align:left;place-self:center>
@@ -296,15 +296,23 @@ Made for NFT flippers, by an NFT flipper.
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.2.0/ethers.umd.min.js" type="application/javascript"></script>
 <script src="https://integrate.depay.com/widgets/v12.js"></script>
 <script>
-const promo = (new URLSearchParams(window.location.search)).get("promo");
-let pricex = 1;
+let promo = (new URLSearchParams(window.location.search)).get("promo");
+// let pricex = 1;
+let pricex = 0.85;
 if (promo!=null && promo==="john10") {
     pricex = 0.9;
+    pricex = 0.75;
+};
+if (promo===null) {
+    promo = "Launch Sale";
 };
 const buttons=[
-{id:"standard",price:parseFloat((0.4*pricex).toFixed(3))},
-{id:"pro",price:parseFloat((0.7*pricex).toFixed(3))},
-{id:"ultra",price:parseFloat((0.95*pricex).toFixed(3))},
+{id:"standard",price:parseFloat((0.35*pricex).toFixed(4))},
+{id:"pro",price:parseFloat((0.6*pricex).toFixed(4))},
+{id:"ultra",price:parseFloat((0.82*pricex).toFixed(4))},
+// {id:"standard",price:parseFloat((0.4*pricex).toFixed(4))},
+// {id:"pro",price:parseFloat((0.7*pricex).toFixed(4))},
+// {id:"ultra",price:parseFloat((0.95*pricex).toFixed(4))},
 {id:"prefix",price:0.15}];
 
 
