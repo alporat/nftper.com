@@ -9,7 +9,376 @@
 <link rel=icon type=image/x-icon href=favicon.ico>
 <link href=https://rsms.me/inter/inter-ui.css rel=stylesheet>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fork-awesome/1.2.0/css/fork-awesome.min.css>
-<link rel=stylesheet href=css/default.css>
+<link rel=stylesheet href=css/default-2.css>
+<style>
+/* Pricing Tabs - Thin Clean Design */
+.pricing-tabs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.pricing-tabs {
+    display: inline-flex;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    padding: 4px;
+    gap: 4px;
+}
+
+.pricing-tab {
+    padding: 12px 0;
+    width: 120px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background-color: transparent;
+    color: #888;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.pricing-tab:hover {
+    background-color: #3a3a3a;
+    color: #bbb;
+}
+
+.pricing-tab.active {
+    background-color: #17c671;
+    color: #000000;
+    box-shadow: 0 2px 8px rgba(23, 198, 113, 0.3);
+}
+
+.tab-discount {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #00e5a0;
+    margin-left: 4px;
+}
+
+.pricing-tab.active .tab-discount {
+    color: #006644;
+}
+
+/* Badges row below tabs */
+.pricing-badges-row {
+    display: flex;
+    margin-top: 10px;
+    gap: 4px;
+}
+
+.badge-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 120px;
+    min-height: 20px;
+}
+
+/* Mobile badges - hidden on desktop */
+.pricing-badges-mobile {
+    display: none;
+}
+
+.tab-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+}
+
+.badge-blurbidding {
+    background-color: rgba(217, 119, 48, 0.2);
+    color: #d97730;
+    border: 1px solid rgba(217, 119, 48, 0.4);
+}
+
+.badge-multiwallet {
+    background-color: rgba(0, 168, 255, 0.2);
+    color: #00a8ff;
+    border: 1px solid rgba(0, 168, 255, 0.4);
+}
+
+/* Feature text colors */
+.feature-blurbidding {
+    color: #d97730;
+    font-weight: 600;
+}
+
+.feature-multiwallet {
+    color: #00a8ff;
+    font-weight: 600;
+}
+
+.feature-blurbidding-pro {
+    color: #d97730;
+    font-weight: 700;
+    font-size: 1.05em;
+}
+
+.feature-blurbidding-pro::after {
+    content: " PRO";
+    color: #e88940;
+    font-weight: 800;
+    text-shadow: 0 0 8px rgba(217, 119, 48, 0.5);
+}
+
+/* Pricing details */
+.pricing-details {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.price-per-month {
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 0.25rem;
+}
+
+.price-original {
+    text-decoration: line-through;
+    color: #666;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+}
+
+.price-total {
+    font-size: 0.95rem;
+    color: #bbb;
+    margin-top: 0.25rem;
+}
+
+/* Addon Checkboxes */
+.addon-checkboxes {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.addon-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 12px 20px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    margin-bottom: 0;
+}
+
+.addon-checkbox:hover {
+    background-color: #3a3a3a;
+}
+
+.addon-checkbox.checked {
+    border-color: #17c671;
+}
+
+.addon-checkbox.disabled {
+    opacity: 0.9;
+    cursor: default;
+}
+
+.addon-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #17c671;
+    cursor: pointer;
+    margin-right: 6px;
+}
+
+.addon-checkbox.disabled input[type="checkbox"] {
+    cursor: default;
+}
+
+.addon-checkbox .addon-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #ccc;
+}
+
+.addon-checkbox .addon-price {
+    font-size: 0.85rem;
+    color: #999;
+    margin-left: 4px;
+}
+
+.addon-checkbox .addon-free {
+    font-size: 0.85rem;
+    color: #17c671;
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+/* Addon info tooltip */
+.addon-info {
+    position: relative;
+    font-size: 0.85rem;
+    color: #666;
+    cursor: help;
+    margin-left: 2px;
+    transition: color 0.2s ease;
+}
+
+.addon-info:hover {
+    color: #999;
+}
+
+.addon-info::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1a1a1a;
+    color: #ddd;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    white-space: normal;
+    width: 220px;
+    text-align: left;
+    line-height: 1.4;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    border: 1px solid #333;
+    pointer-events: none;
+}
+
+.addon-info::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1a1a1a;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 101;
+}
+
+.addon-info:hover::after,
+.addon-info:hover::before,
+.addon-info.active::after,
+.addon-info.active::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .pricing-tabs-container {
+        margin-top: 30px;
+    }
+
+    .pricing-tabs {
+        flex-direction: column;
+        gap: 4px;
+        width: 100%;
+        max-width: 220px;
+    }
+
+    .pricing-tab {
+        width: 100%;
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .tab-discount {
+        font-size: 0.65rem;
+    }
+
+    .pricing-badges-row {
+        display: none;
+    }
+
+    .pricing-badges-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 16px;
+        align-items: center;
+    }
+
+    .mobile-badge-item {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .mobile-badge-tier {
+        font-size: 0.75rem;
+        color: #888;
+        font-weight: 500;
+    }
+
+    .tab-badge {
+        font-size: 0.6rem;
+        padding: 3px 8px;
+    }
+
+    .addon-checkboxes {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .addon-checkbox {
+        width: 90%;
+        max-width: 280px;
+        justify-content: center;
+        padding: 10px 16px;
+    }
+
+    .addon-checkbox .addon-label {
+        font-size: 0.85rem;
+    }
+
+    .addon-checkbox .addon-price,
+    .addon-checkbox .addon-free {
+        font-size: 0.75rem;
+    }
+
+    .addon-info::after {
+        width: 180px;
+        font-size: 0.75rem;
+        padding: 8px 10px;
+        left: auto;
+        right: -10px;
+        transform: none;
+    }
+
+    .addon-info::before {
+        left: auto;
+        right: 20px;
+        transform: none;
+    }
+}
+</style>
 </head>
 <body>
 <section class=smart-scroll style=top:0!important>
@@ -18,7 +387,6 @@
 <a class="navbar-brand heading-black page-scroll" href=#home>
 <img src=img/logo.png alt=test>
 <span>NFT</span>PER
-<!-- <span>NFT</span>PER <span class="color-changing-text">EXTREME</span> -->
 </a>
 <button class="navbar-toggler navbar-toggler-right border-0" type=button data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
 <span data-feather=grid></span>
@@ -70,7 +438,7 @@
 <div class="row vh-md-100">
 <div class="col-md-5 ml-auto my-auto text-center text-md-left">
 <span class="text- text-muted small-xl" style=font-size:1.5rem>As the name says:</span>
-<h1 class="display-4 mt-2 mb-5" style=font-size:3rem;font-weight:500>Extremely fast NFT token bidding</h1>
+<h1 class="display-4 mt-2 mb-5" style=font-size:3rem;font-weight:500>Extremely fast NFT bidding</h1>
 <a href=#about class="btn btn-secondary d-inline-flex flex-row align-items-center page-scroll">
 Demo Video
 <em data-feather=chevrons-right width=20 height=20 class=ml-2></em>
@@ -166,17 +534,103 @@ Made for NFT flippers, by an NFT flipper.
 
 </section>
 <hr />
-<section class=pt-7 id=pricing>
-<div class=container>
+<section class=ptt-7 id=pricing>
+<div class=container style="max-width: 81%; padding-left: 2rem; padding-right: 2rem;">
 <div class=row>
 <div class="col-md-6 mx-auto text-center">
 <h2>Choose your pricing plan</h2>
-<p class="text-muted lead" style=margin-right:2rem;margin-left:2rem>Extremely fast OpenSea token bidding</p>
+<p class="text-muted lead" style=margin-right:2rem;margin-left:2rem>Extremely fast bidding</p>
 </div>
 </div>
-<div class="row pt-5 pricing-table">
+
+<!-- Month Tabs -->
+<div class="row ptt-3">
+<div class="col-12 text-center">
+<div class="pricing-tabs-container">
+    <div class="pricing-tabs">
+        <button class="pricing-tab active" data-months="1">1 month</button>
+        <button class="pricing-tab" data-months="3">3 months <span class="tab-discount">-10%</span></button>
+        <button class="pricing-tab" data-months="6">6 months <span class="tab-discount">-25%</span></button>
+    </div>
+    <div class="pricing-badges-row">
+        <div class="badge-column"></div>
+        <div class="badge-column">
+            <span class="tab-badge badge-blurbidding">+ Free Blur Bidding</span>
+        </div>
+        <div class="badge-column">
+            <span class="tab-badge badge-blurbidding">+ Free Blur Bidding</span>
+            <span class="tab-badge badge-multiwallet">+ Free Multi-wallet</span>
+        </div>
+    </div>
+    <div class="pricing-badges-mobile">
+        <div class="mobile-badge-item">
+            <span class="mobile-badge-tier">3+ months:</span>
+            <span class="tab-badge badge-blurbidding">+ Free Blur Bidding</span>
+        </div>
+        <div class="mobile-badge-item">
+            <span class="mobile-badge-tier">6 months:</span>
+            <!-- <span class="tab-badge badge-blurbidding">+ Free Blur Bidding</span> -->
+            <span class="tab-badge badge-multiwallet">+ Free Multi-wallet</span>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Addon Checkboxes -->
+<div class="row ptt-3">
+<div class="col-12 text-center">
+<div class="addon-checkboxes">
+    Add-ons:
+    <label class="addon-checkbox" id="addon-blurbidding-label">
+        <input type="checkbox" id="addon-blurbidding">
+        <span class="addon-label">Include Blur Bidding</span>
+        <span class="addon-info" data-tooltip="This addon allows you to bid on Blur.io. Blur Bidding speed is same for all plans.">ⓘ</span>
+        <span class="addon-price" id="addon-blurbidding-price">(+Ξ0.06/mo)</span>
+        <span class="addon-free" id="addon-blurbidding-free" style="display:none;">Free</span>
+    </label>
+    <label class="addon-checkbox" id="addon-multiwallet-label">
+        <input type="checkbox" id="addon-multiwallet">
+        <span class="addon-label">Multi-wallet</span>
+        <span class="addon-info" data-tooltip="With this addon, you can use up to 3 wallets at the same time to bid by simply assigning tasks the desired wallet. With our without this addon, you can add up to 5 bidding wallets to your profile, but without the addon you can only bid from one at a time.">ⓘ</span>
+        <span class="addon-price" id="addon-multiwallet-price">(+Ξ0.08/mo)</span>
+        <span class="addon-free" id="addon-multiwallet-free" style="display:none;">Free</span>
+    </label>
+    <label class="addon-checkbox" id="addon-noprefix-label">
+        <input type="checkbox" id="addon-noprefix">
+        <span class="addon-label">No prefix</span>
+        <span class="addon-info" data-tooltip="This addon removes requirement of the NFTPER prefix from your username.">ⓘ</span>
+        <span class="addon-price" id="addon-noprefix-price">(+Ξ0.06/mo)</span>
+    </label>
+</div>
+</div>
+</div>
+
+<div class="row ptt-5 pricing-table">
 <div class=col-sm-12>
 <div class="card-deck pricing-table">
+<div class="card text-center">
+<div class=card-body>
+<h4 class="card-title pt-3">Starter</h4>
+
+<div class="text-muted" id=startersale style="display:none;  font-size:1.3rem; width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" ><s>Ξ0.12</s> 🛈</div>
+
+<h2 class="card-title text-primary pt-4" id=starterprice>Ξ0.12</h2>
+<div class="pricing-details" id=starterdetails>
+<a class="text-muted" style=display:block>1 month access</a>
+</div>
+<!--a class="text-muted"><br>&nbsp;</a-->
+<ul class="list-unstyled pricing-list" style=text-align:left;place-self:center>
+<li>✔️ <span class=color-changing-text style=font-weight:bold>3 bids/second</span></li>
+<li>✔️ Instant counter bidding</li>
+<li>✔️ Auto cancelling</li>
+<li>✔️ Unlimited tasks</span></li>
+<li class="blurbidding-feature" style="display:none;">✔️ <span class="feature-blurbidding">Blur Bidding</span></li>
+<li class="multiwallet-feature" style="display:none;">✔️ <span class="feature-multiwallet">Run 3 wallets simultaneously</span></li>
+</ul>
+<button class="btn btn-primary" id=starter>Purchase</button>
+</div>
+</div>
 <div class="card text-center">
 <div class=card-body>
 <h4 class="card-title pt-3">Base</h4>
@@ -184,34 +638,65 @@ Made for NFT flippers, by an NFT flipper.
 <div class="text-muted" id=basesale style="display:none;  font-size:1.3rem; width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" ><s>Ξ0.16</s> 🛈</div>
 
 <h2 class="card-title text-primary pt-4" id=baseprice>Ξ0.16</h2>
+<div class="pricing-details" id=basedetails>
 <a class="text-muted" style=display:block>1 month access</a>
+</div>
 <!--a class="text-muted"><br>&nbsp;</a-->
 <ul class="list-unstyled pricing-list" style=text-align:left;place-self:center>
 <li>✔️ <span class=color-changing-text style=font-weight:bold>8 bids/second</span></li>
 <li>✔️ Instant counter bidding</li>
 <li>✔️ Auto cancelling</li>
 <li>✔️ Unlimited tasks</span></li>
-<li><span class=text-muted>(coming soon)</span> Includes autolister</li>
+<li class="blurbidding-feature" style="display:none;">✔️ <span class="feature-blurbidding">Blur Bidding</span></li>
+<li class="multiwallet-feature" style="display:none;">✔️ <span class="feature-multiwallet">Run 3 wallets simultaneously</span></li>
 </ul>
 <button class="btn btn-primary" id=base>Purchase</button>
 </div>
 </div>
+
+<!-- <div class="card text-center">
+<div class=card-body>
+<h4 class="card-title pt-3">Plus</h4>
+
+<!-- <div class="text-muted" id=plussale style="display:none;  font-size:1.3rem; width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" ><s>Ξ0.3</s> 🛈</div> ->
+
+<h2 class="card-title text-primary pt-4" id=plusprice>Ξ0.3</h2>
+<div class="pricing-details" id=plusdetails>
+<a class="text-muted" style=display:block>1 month access</a>
+</div>
+<ul class="list-unstyled pricing-list" style=text-align:left;place-self:center>
+<li>✔️ <span class=color-changing-text style=font-weight:bold>16 bids/second</span></li>
+<li>✔️ Instant counter bidding</li>
+<li>✔️ Auto cancelling</li>
+<li>✔️ Unlimited tasks</span></li>
+<!-- <li class="blurbidding-feature" style="display:none;">✔️ <span class="feature-blurbidding-pro">Blur Bidding</span></li> ->
+<li class="blurbidding-feature" style="display:none;">✔️ <span class="feature-blurbidding">Blur Bidding</span></li>
+<li class="multiwallet-feature" style="display:none;">✔️ <span class="feature-multiwallet">Run 3 wallets simultaneously</span></li>
+<!-- <li class="default-feature"><span class=text-muted>(coming soon)</span> Includes </li> ->
+</ul>
+<button class="btn btn-primary" id=plus>Purchase</button>
+</div>
+</div> -->
+
 <div class="card text-center">
 <div class=card-body>
 <h4 class="card-title pt-3">Pro</h4>
 
-<div class="text-muted" id=prosale style="display:none;  font-size:1.3rem; width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" ><s>Ξ0.45</s> 🛈</div>
+<div class="text-muted" id=pro30sale style="display:none;  font-size:1.3rem; width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" ><s>Ξ0.45</s> 🛈</div>
 
-<h2 class="card-title text-primary pt-4" id=proprice>Ξ0.45</h2>
+<h2 class="card-title text-primary pt-4" id=pro30price>Ξ0.45</h2>
+<div class="pricing-details" id=pro30details>
 <a class="text-muted" style=display:block>1 month access</a>
+</div>
 <ul class="list-unstyled pricing-list" style=text-align:left;place-self:center>
 <li>✔️ <span class=color-changing-text style=font-weight:bold>30 bids/second</span></li>
 <li>✔️ Instant counter bidding</li>
 <li>✔️ Auto cancelling</li>
 <li>✔️ Unlimited tasks</span></li>
-<li><span class=text-muted>(coming soon)</span> Includes autolister</li>
+<li class="blurbidding-feature" style="display:none;">✔️ <span class="feature-blurbidding">Blur Bidding</span></li>
+<li class="multiwallet-feature" style="display:none;">✔️ <span class="feature-multiwallet">Run 3 wallets simultaneously</span></li>
 </ul>
-<button class="btn btn-primary" id=pro>Purchase</button>
+<button class="btn btn-primary" id=pro30>Purchase</button>
 </div>
 </div>
 <div class="card text-center">
@@ -221,14 +706,17 @@ Made for NFT flippers, by an NFT flipper.
 <div class="text-muted" id=extremesale style="display:none;  font-size:1.3rem; width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" ><s>Ξ1</s> 🛈</div>
 <h2 class="card-title text-primary pt-4" id=extremeprice>Ξ1</h2>
 
+<div class="pricing-details" id=extremedetails>
 <a class="text-muted" style=display:block>1 month access</a>
+</div>
 <ul class="list-unstyled pricing-list" style=text-align:left;place-self:center>
 <li>✔️ <span class=color-changing-text style=font-weight:bold>100 bids/second</span></li>
 <li>✔️ Instant counter bidding</li>
 <li>✔️ Auto cancelling</li>
 <li>✔️ Unlimited tasks</span></li>
 <!-- <li>✔️ Includes <a href=https://nftper.com target=_blank style=text-decoration:underline>bidding</a> for <span class=color-changing-text >free</span></li> -->
-<li><span class=text-muted>(coming soon)</span> Includes autolister</li>
+<li class="blurbidding-feature" style="display:none;">✔️ <span class="feature-blurbidding">Blur Bidding</span></li>
+<li class="multiwallet-feature" style="display:none;">✔️ <span class="feature-multiwallet">Run 3 wallets simultaneously</span></li>
 </ul>
 <button class="btn btn-primary" id=extreme>Purchase</button>
 </div>
@@ -236,7 +724,7 @@ Made for NFT flippers, by an NFT flipper.
 </div>
 </div>
 </div>
-<a href=#addons class="btn btn-secondary extra-features">Extra add-ons</a>
+<!-- <a href=#addons class="btn btn-secondary extra-features">Extra add-ons</a>
 <div class=extra-reveal style=display:none>
 <div class=col-sm-12 style=margin-top:1rem>
 <div class="card-deck pricing-table">
@@ -264,7 +752,7 @@ Made for NFT flippers, by an NFT flipper.
 </div>
 </div>
 </div>
-</div>
+</div> -->
 <div class="row mt-6" id=faq>
 <div class="col-md-10 mx-auto">
 <div class=row>
@@ -319,7 +807,7 @@ Made for NFT flippers, by an NFT flipper.
 <a href=/tos target=_blank>Terms of Service</a> - <a href=/privacy-policy target=_blank>Privacy Policy</a>
 </div>
 <div class="col-12 text-muted text-center small-xl">
-&copy; 2024 NFTPER - All Rights Reserved
+&copy; 2022-2026 NFTPER - All Rights Reserved
 </div>
 </div>
 </div>
@@ -336,27 +824,297 @@ Made for NFT flippers, by an NFT flipper.
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.2.0/ethers.umd.min.js" type="application/javascript"></script>
 <script src="https://integrate.depay.com/widgets/v12.js"></script>
 <script>
+// Multi-month discount configuration (easily adjustable)
+const DISCOUNT_3_MONTHS = 0.10; // 10% off for 3 months
+const DISCOUNT_6_MONTHS = 0.25; // 25% off for 6 months
+
+// Current selected months
+let currentMonths = 1;
+
 let promo = (new URLSearchParams(window.location.search)).get("promo");
 let pricex = 1;
 // let pricex = 0.85;
 if (promo!=null && promo==="john10") {
-    pricex = 0.9;
+    // pricex = 0.9;
     // pricex = 0.75;
 };
 if (promo===null) {
    promo = "Update Sale";
 };
+
+// Base prices per month for each plan
+const basePrices = {
+    starter: 0.12,
+    base: 0.16,
+    plus: 0.3,
+    pro30: 0.45,
+    extreme: 1
+};
+
+// ===========================================
+// ADDON PRICES - Easily adjustable here!
+// ===========================================
+const ADDON_PRICES = {
+    blurbidding: 0.06,   // Price for Blur Bidding addon
+    multiwallet: 0.08,   // Price for Multi-wallet addon
+    noprefix: 0.06       // Price for No prefix addon
+};
+
+// Track which addons the USER manually selected (not auto-selected due to free)
+let userSelectedAddons = {
+    blurbidding: false,
+    multiwallet: false,
+    noprefix: false
+};
+
+// Track current effective state (includes free addons)
+let selectedAddons = {
+    blurbidding: false,
+    multiwallet: false,
+    noprefix: false
+};
+
+// Function to calculate price based on months
+function calculatePrice(basePrice, months) {
+    let totalPrice = basePrice * months;
+    if (months === 3) {
+        totalPrice = totalPrice * (1 - DISCOUNT_3_MONTHS);
+    } else if (months === 6) {
+        totalPrice = totalPrice * (1 - DISCOUNT_6_MONTHS);
+    }
+    return parseFloat(totalPrice.toFixed(2));
+}
+
 const buttons=[
-{id:"base",price:parseFloat((0.16).toFixed(2))},
-{id:"pro",price:parseFloat((0.45*pricex).toFixed(2))},
-{id:"extreme",price:parseFloat((1*pricex).toFixed(2))},
-// {id:"standard",price:parseFloat((0.4*pricex).toFixed(4))},
-// {id:"pro",price:parseFloat((0.7*pricex).toFixed(4))},
-// {id:"ultra",price:parseFloat((0.95*pricex).toFixed(4))},
+{id:"starter",price:parseFloat((basePrices.starter).toFixed(2))},
+{id:"base",price:parseFloat((basePrices.base).toFixed(2))},
+{id:"plus",price:parseFloat((basePrices.plus*pricex).toFixed(2))},
+{id:"pro30",price:parseFloat((basePrices.pro30*pricex).toFixed(2))},
+{id:"extreme",price:parseFloat((basePrices.extreme*pricex).toFixed(2))},
 {id:"prefix",price:0.1},
 {id:"ultra",price:0.1}];
 
+// Function to check if an addon is free based on current months
+function isAddonFree(addon) {
+    if (addon === 'blurbidding' && currentMonths >= 3) return true;
+    if (addon === 'multiwallet' && currentMonths >= 6) return true;
+    return false;
+}
 
+// Function to update addon checkboxes state
+function updateAddonCheckboxes() {
+    const addons = ['blurbidding', 'multiwallet', 'noprefix'];
+
+    addons.forEach(addon => {
+        const checkbox = document.getElementById(`addon-${addon}`);
+        const label = document.getElementById(`addon-${addon}-label`);
+        const priceSpan = document.getElementById(`addon-${addon}-price`);
+        const freeSpan = document.getElementById(`addon-${addon}-free`);
+
+        if (!checkbox || !label) return;
+
+        const isFree = isAddonFree(addon);
+
+        if (isFree) {
+            // Force check and disable (it's free!)
+            checkbox.checked = true;
+            checkbox.disabled = true;
+            selectedAddons[addon] = true;
+            label.classList.add('disabled', 'checked');
+
+            // Show "Free" label, hide price
+            if (priceSpan) priceSpan.style.display = 'none';
+            if (freeSpan) freeSpan.style.display = 'inline';
+        } else {
+            // Not free - restore to user's manual selection
+            checkbox.disabled = false;
+            checkbox.checked = userSelectedAddons[addon];
+            selectedAddons[addon] = userSelectedAddons[addon];
+            label.classList.remove('disabled');
+
+            // Show price, hide "Free" label
+            if (priceSpan) priceSpan.style.display = 'inline';
+            if (freeSpan) freeSpan.style.display = 'none';
+
+            // Update checked styling based on user's selection
+            if (userSelectedAddons[addon]) {
+                label.classList.add('checked');
+            } else {
+                label.classList.remove('checked');
+            }
+        }
+    });
+}
+
+// Function to calculate addon cost PER MONTH (only for non-free addons)
+function getAddonPerMonth() {
+    let total = 0;
+
+    if (selectedAddons.blurbidding && !isAddonFree('blurbidding')) {
+        total += ADDON_PRICES.blurbidding;
+    }
+    if (selectedAddons.multiwallet && !isAddonFree('multiwallet')) {
+        total += ADDON_PRICES.multiwallet;
+    }
+    if (selectedAddons.noprefix && !isAddonFree('noprefix')) {
+        total += ADDON_PRICES.noprefix;
+    }
+
+    return total;
+}
+
+// Function to calculate total addon cost (only for non-free addons)
+// Addons are priced per month, so multiply by currentMonths
+function getAddonTotal() {
+    return getAddonPerMonth() * currentMonths;
+}
+
+// Function to update pricing display
+function updatePricingDisplay() {
+    // IMPORTANT: Update addon state FIRST before calculating prices
+    updateAddonCheckboxes();
+
+    const plans = ['starter', 'base', 'plus', 'pro30', 'extreme'];
+    const addonTotal = getAddonTotal();
+
+    plans.forEach(plan => {
+        const basePrice = basePrices[plan] * pricex;
+        const planPrice = calculatePrice(basePrice, currentMonths);
+        const finalPrice = parseFloat((planPrice + addonTotal).toFixed(2));
+
+        // Update button price
+        const buttonObj = buttons.find(b => b.id === plan);
+        if (buttonObj) {
+            buttonObj.price = finalPrice;
+        }
+
+        // Update display price and details
+        try {
+            const priceElement = document.getElementById(plan + "price");
+            const detailsElement = document.getElementById(plan + "details");
+
+            if (currentMonths === 1) {
+                // For 1 month, show simple price
+                priceElement.textContent = `Ξ${finalPrice}`;
+                detailsElement.innerHTML = '<a class="text-muted" style="display:block">1 month access</a>';
+            } else {
+                // For multi-month, show discounted total price
+                const addonPerMonth = getAddonPerMonth();
+                const originalPricePerMonth = basePrice + addonPerMonth; // Include addons in original price
+                const discountedPerMonth = (planPrice / currentMonths) + addonPerMonth;
+
+                priceElement.textContent = `Ξ${finalPrice}`;
+                detailsElement.innerHTML = `
+                    <div class="price-per-month">
+                        <span class="price-original">Ξ${originalPricePerMonth.toFixed(2)}/mo</span>
+                        <span style="color:#00e5a0;font-weight:600;">Ξ${discountedPerMonth.toFixed(2)}/mo</span>
+                    </div>
+                    <a class="text-muted" style="display:block;font-size:0.9rem;">${currentMonths} months access</a>
+                `;
+            }
+        } catch (e) {
+            console.error('Error updating price for', plan, e);
+        }
+    });
+
+    // Show/hide features based on months
+    const showBlurbidding = currentMonths >= 3;
+    const showMultiwallet = currentMonths >= 6;
+
+    document.querySelectorAll('.blurbidding-feature').forEach(el => {
+        el.style.display = showBlurbidding ? 'list-item' : 'none';
+    });
+
+    document.querySelectorAll('.multiwallet-feature').forEach(el => {
+        el.style.display = showMultiwallet ? 'list-item' : 'none';
+    });
+
+    document.querySelectorAll('.default-feature').forEach(el => {
+        el.style.display = (showBlurbidding || showMultiwallet) ? 'none' : 'list-item';
+    });
+
+    // Update badges shown below tabs
+    updatePricingBadges();
+}
+
+// Function to update badges visibility - no longer needed but kept for compatibility
+function updatePricingBadges() {
+    // Badges are now always visible below their respective tabs
+    // No dynamic updates needed
+}
+
+// Tab switching functionality
+document.querySelectorAll('.pricing-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        // Remove active class from all tabs
+        document.querySelectorAll('.pricing-tab').forEach(t => t.classList.remove('active'));
+
+        // Add active class to clicked tab
+        this.classList.add('active');
+
+        // Update current months
+        currentMonths = parseInt(this.getAttribute('data-months'));
+
+        // Update pricing display
+        updatePricingDisplay();
+    });
+});
+
+// Addon checkbox event listeners
+['blurbidding', 'multiwallet', 'noprefix'].forEach(addon => {
+    const checkbox = document.getElementById(`addon-${addon}`);
+    const label = document.getElementById(`addon-${addon}-label`);
+
+    if (checkbox) {
+        checkbox.addEventListener('change', function() {
+            // Only update user selection if the addon is NOT free
+            // (if it's free, checkbox is disabled anyway)
+            if (!isAddonFree(addon)) {
+                userSelectedAddons[addon] = this.checked;
+                selectedAddons[addon] = this.checked;
+            }
+
+            // Update label styling
+            if (this.checked) {
+                label.classList.add('checked');
+            } else {
+                label.classList.remove('checked');
+            }
+
+            // Recalculate prices
+            updatePricingDisplay();
+        });
+    }
+});
+
+// Initialize addon checkboxes and badges on page load
+updateAddonCheckboxes();
+updatePricingBadges();
+
+// Addon info tooltip click handler for mobile
+document.querySelectorAll('.addon-info').forEach(info => {
+    info.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Close all other tooltips first
+        document.querySelectorAll('.addon-info.active').forEach(other => {
+            if (other !== this) other.classList.remove('active');
+        });
+
+        // Toggle this tooltip
+        this.classList.toggle('active');
+    });
+});
+
+// Close tooltip when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.addon-info')) {
+        document.querySelectorAll('.addon-info.active').forEach(info => {
+            info.classList.remove('active');
+        });
+    }
+});
 
 buttons.forEach(button=>
 {
