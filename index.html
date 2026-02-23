@@ -654,38 +654,15 @@ Made for NFT flippers, by an NFT flipper.
 </div>
 </div>
 
-<!-- <div class="card text-center">
-<div class=card-body>
-<h4 class="card-title pt-3">Plus</h4>
-
-<!-- <div class="text-muted" id=plussale style="display:none;  font-size:1.3rem; width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" ><s>Ξ0.3</s> 🛈</div> ->
-
-<h2 class="card-title text-primary pt-4" id=plusprice>Ξ0.3</h2>
-<div class="pricing-details" id=plusdetails>
-<a class="text-muted" style=display:block>1 month access</a>
-</div>
-<ul class="list-unstyled pricing-list" style=text-align:left;place-self:center>
-<li>✔️ <span class=color-changing-text style=font-weight:bold>16 bids/second</span></li>
-<li>✔️ Instant counter bidding</li>
-<li>✔️ Auto cancelling</li>
-<li>✔️ Unlimited tasks</span></li>
-<!-- <li class="blurbidding-feature" style="display:none;">✔️ <span class="feature-blurbidding-pro">Blur Bidding</span></li> ->
-<li class="blurbidding-feature" style="display:none;">✔️ <span class="feature-blurbidding">Blur Bidding</span></li>
-<li class="multiwallet-feature" style="display:none;">✔️ <span class="feature-multiwallet">Run 3 wallets simultaneously</span></li>
-<!-- <li class="default-feature"><span class=text-muted>(coming soon)</span> Includes </li> ->
-</ul>
-<button class="btn btn-primary" id=plus>Purchase</button>
-</div>
-</div> -->
 
 <div class="card text-center">
 <div class=card-body>
 <h4 class="card-title pt-3">Pro</h4>
 
-<div class="text-muted" id=pro30sale style="display:none;  font-size:1.3rem; width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" ><s>Ξ0.45</s> 🛈</div>
+<div class="text-muted" id=prosale style="display:none;  font-size:1.3rem; width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" ><s>Ξ0.45</s> 🛈</div>
 
-<h2 class="card-title text-primary pt-4" id=pro30price>Ξ0.45</h2>
-<div class="pricing-details" id=pro30details>
+<h2 class="card-title text-primary pt-4" id=proprice>Ξ0.45</h2>
+<div class="pricing-details" id=prodetails>
 <a class="text-muted" style=display:block>1 month access</a>
 </div>
 <ul class="list-unstyled pricing-list" style=text-align:left;place-self:center>
@@ -696,7 +673,7 @@ Made for NFT flippers, by an NFT flipper.
 <li class="blurbidding-feature" style="display:none;">✔️ <span class="feature-blurbidding">Blur Bidding</span></li>
 <li class="multiwallet-feature" style="display:none;">✔️ <span class="feature-multiwallet">Run 3 wallets simultaneously</span></li>
 </ul>
-<button class="btn btn-primary" id=pro30>Purchase</button>
+<button class="btn btn-primary" id=pro>Purchase</button>
 </div>
 </div>
 <div class="card text-center">
@@ -724,35 +701,6 @@ Made for NFT flippers, by an NFT flipper.
 </div>
 </div>
 </div>
-<!-- <a href=#addons class="btn btn-secondary extra-features">Extra add-ons</a>
-<div class=extra-reveal style=display:none>
-<div class=col-sm-12 style=margin-top:1rem>
-<div class="card-deck pricing-table">
-<div class="card text-center">
-<div class=card-body>
-<h4 class="card-title pt-3">Remove Prefix</h4>
-<h2 class="card-title text-primary pt-4">Ξ0.1</h2>
-<a class="text-muted">1 month access <div class="text-muted" style="display:inline;width:fit-content;margin-left:auto;margin-right:auto;border-bottom: 2px dotted #a1988c" data-toggle="tooltip" data-html="true" title="Ends when current subscription month ends">🛈</div></a>
-<ul class="list-unstyled pricing-list">
-<li>✔️ Remove NFTPER prefix from your username</li>
-</ul>
-<button class="btn btn-primary" id=prefix>Purchase</button>
-</div>
-</div>
-<div class="card text-center">
-<div class=card-body>
-<h4 class="card-title pt-3">Ultra</h4>
-<h2 class="card-title text-primary pt-4">Ξ0.7</h2>
-<a class="text-muted">1 month access</a>
-<ul class="list-unstyled pricing-list">
-<li>✔️ <span class=color-changing-text style=font-weight:bold>60 bids/second</span> (and same features)</li>
-</ul>
-<button class="btn btn-primary" id=ultra>Purchase</button>
-</div>
-</div>
-</div>
-</div>
-</div> -->
 <div class="row mt-6" id=faq>
 <div class="col-md-10 mx-auto">
 <div class=row>
@@ -846,8 +794,7 @@ if (promo===null) {
 const basePrices = {
     starter: 0.12,
     base: 0.16,
-    plus: 0.3,
-    pro30: 0.45,
+    pro: 0.45,
     extreme: 1
 };
 
@@ -888,9 +835,8 @@ function calculatePrice(basePrice, months) {
 const buttons=[
 {id:"starter",price:parseFloat((basePrices.starter).toFixed(2))},
 {id:"base",price:parseFloat((basePrices.base).toFixed(2))},
-{id:"plus",price:parseFloat((basePrices.plus*pricex).toFixed(2))},
-{id:"pro30",price:parseFloat((basePrices.pro30*pricex).toFixed(2))},
-{id:"extreme",price:parseFloat((basePrices.extreme*pricex).toFixed(2))},
+{id:"pro",price:parseFloat((basePrices.pro).toFixed(2))},
+{id:"extreme",price:parseFloat((basePrices.extreme).toFixed(2))},
 {id:"prefix",price:0.1},
 {id:"ultra",price:0.1}];
 
@@ -974,7 +920,7 @@ function updatePricingDisplay() {
     // IMPORTANT: Update addon state FIRST before calculating prices
     updateAddonCheckboxes();
 
-    const plans = ['starter', 'base', 'plus', 'pro30', 'extreme'];
+    const plans = ['starter', 'base', 'pro', 'extreme'];
     const addonTotal = getAddonTotal();
 
     plans.forEach(plan => {
