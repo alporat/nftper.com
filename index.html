@@ -108,6 +108,102 @@
     border: 1px solid rgba(0, 168, 255, 0.4);
 }
 
+.badge-promo {
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(245, 185, 66, 0.2);
+    color: #f5b942;
+    border: 1px solid rgba(245, 185, 66, 0.4);
+}
+
+.badge-promo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 235, 180, 0.75), transparent);
+    animation: badge-shine 2.8s ease-in-out infinite;
+}
+
+@keyframes badge-shine {
+    0% { left: -60%; }
+    55%, 100% { left: 140%; }
+}
+
+@keyframes gold-shine {
+    to { background-position: 200% center; }
+}
+
+/* Promo countdown banner */
+.promo-banner {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin: 0 auto 24px auto;
+    padding: 14px 24px;
+    max-width: 700px;
+    background: linear-gradient(135deg, rgba(245, 185, 66, 0.15), rgba(217, 119, 48, 0.15));
+    border: 1px solid rgba(245, 185, 66, 0.4);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.promo-banner-title {
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.promo-banner-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.promo-line {
+    font-size: 0.9rem;
+    color: #ddd;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.promo-line strong {
+    color: #f5b942;
+}
+
+.promo-banner-note {
+    font-size: 0.75rem;
+    color: #999;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+.promo-countdown {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    background: linear-gradient(90deg, #c98f1f 0%, #f5b942 20%, #fff3d0 40%, #f5b942 60%, #c98f1f 80%, #f5b942 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gold-shine 3s linear infinite;
+}
+
+.promo-bonus-text {
+    font-weight: 600;
+    background: linear-gradient(90deg, #c98f1f 0%, #f5b942 20%, #fff3d0 40%, #f5b942 60%, #c98f1f 80%, #f5b942 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gold-shine 3s linear infinite;
+}
+
 /* Feature text colors */
 .feature-blurbidding {
     color: #d97730;
@@ -377,6 +473,20 @@
         right: 20px;
         transform: none;
     }
+
+    .promo-banner {
+        margin-left: 16px;
+        margin-right: 16px;
+        padding: 12px 16px;
+    }
+
+    .promo-line {
+        font-size: 0.8rem;
+    }
+
+    .promo-countdown {
+        font-size: 1rem;
+    }
 }
 </style>
 </head>
@@ -437,7 +547,7 @@
 <div class=container-fluid>
 <div class="row vh-md-100">
 <div class="col-md-5 ml-auto my-auto text-center text-md-left">
-<span class="text- text-muted small-xl" style=font-size:1.5rem>As the name says:</span>
+<span class="text- text-muted small-xl" style=font-size:1.5rem>Win with our:</span>
 <h1 class="display-4 mt-2 mb-5" style=font-size:3rem;font-weight:500>Extremely fast NFT bidding</h1>
 <a href=#about class="btn btn-secondary d-inline-flex flex-row align-items-center page-scroll">
 Demo Video
@@ -453,7 +563,7 @@ Demo Video
     <div class="row feature-boxes" style=display:block;text-align:left>
     <div class="col-md-6 box" style=padding:1.5rem;border:0>
     <h5 style=font-size:2rem>✔️ Up to <span class=color-changing-text>100 token offers per second</span></h5>
-    <p class=text-muted>Contact us for more than 500 offers per second</p>
+    <p class=text-muted>Contact us for more than 1000 offers per second</p>
     </div>
     <div class="col-md-6 box" style=padding:1.5rem;border:0>
     <h5 style=font-size:2rem>✔️ Instant counter bidding</h5>
@@ -519,12 +629,12 @@ Made for NFT flippers, by an NFT flipper.
 <tr><td>Instant Counter Bidding</td></tr>
 <tr><td>Auto cancelling after each outbid</td></tr>
 <tr><td>OpenSea Bidding</td></tr>
-<tr><td>Collection/Trait Bidding <span class=yellow>(In Development)</span></td></tr>
-<tr><td>OpenSea XP Farming <span class=yellow>(In Development)</span></td></tr>
+<tr><td>Collection/Trait Bidding </td></tr>
+<!-- <tr><td>OpenSea XP Farming <span class=yellow>(In Development)</span></td></tr> -->
 <tr><td>Ethereum NFTs support</td></tr>
-<tr><td>Base/Polygon NFTs support <span class=red>(TBD)</span></td></tr>
-<tr><td>Margin (percentage) offers <span class=yellow>(In Development)</span></td></tr>
-<tr><td>Autolister <span class=red>(TBD)</span></td></tr>
+<tr><td>Multi-Chain NFTs support <span class=red>(TBD)</span></td></tr>
+<tr><td>Margin (percentage) offers</td></tr>
+<tr><td>Autolister</td></tr>
 <tr><td>Trait offering</td></tr>
 <tr><td>Outbidding offers</td></tr>
 <tr><td>Save and reuse config</td></tr>
@@ -543,6 +653,22 @@ Made for NFT flippers, by an NFT flipper.
 </div>
 </div>
 
+<!-- Promo Countdown Banner -->
+<div class="row">
+<div class="col-12 text-center">
+<div class="promo-banner" id="promo-banner">
+    <div class="promo-banner-title">🔥 Limited-Time Promo 🔥</div>
+    <div class="promo-banner-lines">
+        <div class="promo-line">Buy <strong>3 months</strong> &mdash; get <strong>+1 month free</strong></div>
+        <div class="promo-line">Buy <strong>6 months</strong> &mdash; get <strong>+2 months free</strong></div>
+        <div class="promo-line">Buy <strong>12 months</strong> &mdash; get <strong>+3 months free</strong></div>
+    </div>
+    <div class="promo-banner-note">On top of the plan's other perks</div>
+    <div class="promo-countdown" id="promo-countdown">Ends in --d --h --m --s</div>
+</div>
+</div>
+</div>
+
 <!-- Month Tabs -->
 <div class="row ptt-3">
 <div class="col-12 text-center">
@@ -551,15 +677,23 @@ Made for NFT flippers, by an NFT flipper.
         <button class="pricing-tab active" data-months="1">1 month</button>
         <button class="pricing-tab" data-months="3">3 months <span class="tab-discount">-10%</span></button>
         <button class="pricing-tab" data-months="6">6 months <span class="tab-discount">-25%</span></button>
+        <button class="pricing-tab" data-months="12">12 months <span class="tab-discount">-40%</span></button>
     </div>
     <div class="pricing-badges-row">
         <div class="badge-column"></div>
-        <div class="badge-column">
+        <div class="badge-column" id="badge-col-3">
             <span class="tab-badge badge-blurbidding">+ Free Blur Bidding</span>
+            <span class="tab-badge badge-promo promo-badge">+1 Month Free</span>
         </div>
-        <div class="badge-column">
+        <div class="badge-column" id="badge-col-6">
             <span class="tab-badge badge-blurbidding">+ Free Blur Bidding</span>
             <span class="tab-badge badge-multiwallet">+ Free Multi-wallet</span>
+            <span class="tab-badge badge-promo promo-badge">+2 Months Free</span>
+        </div>
+        <div class="badge-column" id="badge-col-12">
+            <span class="tab-badge badge-blurbidding">+ Free Blur Bidding</span>
+            <span class="tab-badge badge-multiwallet">+ Free Multi-wallet</span>
+            <span class="tab-badge badge-promo promo-badge">+3 Months Free</span>
         </div>
     </div>
     <div class="pricing-badges-mobile">
@@ -568,9 +702,21 @@ Made for NFT flippers, by an NFT flipper.
             <span class="tab-badge badge-blurbidding">+ Free Blur Bidding</span>
         </div>
         <div class="mobile-badge-item">
-            <span class="mobile-badge-tier">6 months:</span>
+            <span class="mobile-badge-tier">6+ months:</span>
             <!-- <span class="tab-badge badge-blurbidding">+ Free Blur Bidding</span> -->
             <span class="tab-badge badge-multiwallet">+ Free Multi-wallet</span>
+        </div>
+        <div class="mobile-badge-item">
+            <span class="mobile-badge-tier">3 months:</span>
+            <span class="tab-badge badge-promo promo-badge">+1 Month Free</span>
+        </div>
+        <div class="mobile-badge-item">
+            <span class="mobile-badge-tier">6 months:</span>
+            <span class="tab-badge badge-promo promo-badge">+2 Months Free</span>
+        </div>
+        <div class="mobile-badge-item">
+            <span class="mobile-badge-tier">12 months:</span>
+            <span class="tab-badge badge-promo promo-badge">+3 Months Free</span>
         </div>
     </div>
 </div>
@@ -625,6 +771,7 @@ Made for NFT flippers, by an NFT flipper.
 <li>✔️ Instant counter bidding</li>
 <li>✔️ Auto cancelling</li>
 <li>✔️ Unlimited tasks</span></li>
+<li>✔️ Autolister</span></li>
 <li class="blurbidding-feature" style="display:none;">✔️ <span class="feature-blurbidding">Blur Bidding</span></li>
 <li class="multiwallet-feature" style="display:none;">✔️ <span class="feature-multiwallet">Run 3 wallets simultaneously</span></li>
 </ul>
@@ -647,6 +794,7 @@ Made for NFT flippers, by an NFT flipper.
 <li>✔️ Instant counter bidding</li>
 <li>✔️ Auto cancelling</li>
 <li>✔️ Unlimited tasks</span></li>
+<li>✔️ Autolister</span></li>
 <li class="blurbidding-feature" style="display:none;">✔️ <span class="feature-blurbidding">Blur Bidding</span></li>
 <li class="multiwallet-feature" style="display:none;">✔️ <span class="feature-multiwallet">Run 3 wallets simultaneously</span></li>
 </ul>
@@ -670,6 +818,7 @@ Made for NFT flippers, by an NFT flipper.
 <li>✔️ Instant counter bidding</li>
 <li>✔️ Auto cancelling</li>
 <li>✔️ Unlimited tasks</span></li>
+<li>✔️ Autolister</span></li>
 <li class="blurbidding-feature" style="display:none;">✔️ <span class="feature-blurbidding">Blur Bidding</span></li>
 <li class="multiwallet-feature" style="display:none;">✔️ <span class="feature-multiwallet">Run 3 wallets simultaneously</span></li>
 </ul>
@@ -691,6 +840,7 @@ Made for NFT flippers, by an NFT flipper.
 <li>✔️ Instant counter bidding</li>
 <li>✔️ Auto cancelling</li>
 <li>✔️ Unlimited tasks</span></li>
+<li>✔️ Autolister</span></li>
 <!-- <li>✔️ Includes <a href=https://nftper.com target=_blank style=text-decoration:underline>bidding</a> for <span class=color-changing-text >free</span></li> -->
 <li class="blurbidding-feature" style="display:none;">✔️ <span class="feature-blurbidding">Blur Bidding</span></li>
 <li class="multiwallet-feature" style="display:none;">✔️ <span class="feature-multiwallet">Run 3 wallets simultaneously</span></li>
@@ -775,6 +925,24 @@ Made for NFT flippers, by an NFT flipper.
 // Multi-month discount configuration (easily adjustable)
 const DISCOUNT_3_MONTHS = 0.10; // 10% off for 3 months
 const DISCOUNT_6_MONTHS = 0.25; // 25% off for 6 months
+const DISCOUNT_12_MONTHS = 0.40; // 40% off for 12 months
+
+
+const PROMO_END_DATE = new Date('2026-09-16T23:59:59'); // promo ends 18th of next month
+const PROMO_BONUS_MONTHS = {
+    3: 1,   // buy 3 months, get +1 month free
+    6: 2,   // buy 6 months, get +2 months free
+    12: 3   // buy 12 months, get +3 months free
+};
+
+function isPromoActive() {
+    return Date.now() < PROMO_END_DATE;
+}
+
+function getPromoBonusMonths(months) {
+    if (!isPromoActive()) return 0;
+    return PROMO_BONUS_MONTHS[months] || 0;
+}
 
 // Current selected months
 let currentMonths = 1;
@@ -828,6 +996,8 @@ function calculatePrice(basePrice, months) {
         totalPrice = totalPrice * (1 - DISCOUNT_3_MONTHS);
     } else if (months === 6) {
         totalPrice = totalPrice * (1 - DISCOUNT_6_MONTHS);
+    } else if (months === 12) {
+        totalPrice = totalPrice * (1 - DISCOUNT_12_MONTHS);
     }
     return parseFloat(totalPrice.toFixed(2));
 }
@@ -948,6 +1118,11 @@ function updatePricingDisplay() {
                 const addonPerMonth = getAddonPerMonth();
                 const originalPricePerMonth = basePrice + addonPerMonth; // Include addons in original price
                 const discountedPerMonth = (planPrice / currentMonths) + addonPerMonth;
+                const bonusMonths = getPromoBonusMonths(currentMonths);
+                const totalMonths = currentMonths + bonusMonths;
+                const bonusText = bonusMonths
+                    ? ` <span class="promo-bonus-text">+ ${bonusMonths} free = ${totalMonths} months total</span>`
+                    : '';
 
                 priceElement.textContent = `Ξ${finalPrice}`;
                 detailsElement.innerHTML = `
@@ -955,7 +1130,7 @@ function updatePricingDisplay() {
                         <span class="price-original">Ξ${originalPricePerMonth.toFixed(2)}/mo</span>
                         <span style="color:#00e5a0;font-weight:600;">Ξ${discountedPerMonth.toFixed(2)}/mo</span>
                     </div>
-                    <a class="text-muted" style="display:block;font-size:0.9rem;">${currentMonths} months access</a>
+                    <a class="text-muted" style="display:block;font-size:0.9rem;">${currentMonths} months access${bonusText}</a>
                 `;
             }
         } catch (e) {
@@ -987,6 +1162,38 @@ function updatePricingDisplay() {
 function updatePricingBadges() {
     // Badges are now always visible below their respective tabs
     // No dynamic updates needed
+}
+
+// Show/hide the promo-only badges (e.g. "+1 Month Free") based on whether the promo is still active
+function updatePromoBadges() {
+    const active = isPromoActive();
+    document.querySelectorAll('.promo-badge').forEach(el => {
+        el.style.display = active ? 'inline-block' : 'none';
+    });
+}
+
+// Update the countdown banner text every tick; hides itself once the promo has ended
+function updatePromoCountdown() {
+    const banner = document.getElementById('promo-banner');
+    const countdownEl = document.getElementById('promo-countdown');
+    if (!banner || !countdownEl) return;
+
+    const diff = PROMO_END_DATE - Date.now();
+
+    if (diff <= 0) {
+        banner.style.display = 'none';
+        updatePromoBadges();
+        return;
+    }
+
+    banner.style.display = 'flex';
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    countdownEl.textContent = `Ends in ${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 
 // Tab switching functionality
@@ -1036,6 +1243,9 @@ document.querySelectorAll('.pricing-tab').forEach(tab => {
 // Initialize addon checkboxes and badges on page load
 updateAddonCheckboxes();
 updatePricingBadges();
+updatePromoBadges();
+updatePromoCountdown();
+setInterval(updatePromoCountdown, 1000);
 
 // Addon info tooltip click handler for mobile
 document.querySelectorAll('.addon-info').forEach(info => {
